@@ -2,6 +2,7 @@ package com.darkprograms.esn.checkesn.constants;
 
 /**
  * Constants for checkesnfree.com
+ *
  * @author Luke Kuza
  */
 public interface CheckESNConstants {
@@ -21,6 +22,14 @@ public interface CheckESNConstants {
     /**
      * What to delete on the status text returned from HTML
      */
-    public static final String CHECK_ESN_PARSE_STATUS = "<br /";
+    public static final String CHECK_ESN_PARSE_STATUS_STRONG = "<strong>";
+    /**
+     * The Closing Tag To delete
+     */
+    public static final String CHECK_ESN_PARSE_STATUS_STRONG_CLOSE = "</strong>";
+    /**
+     * What regex is used to split the status HTML
+     */
+    public static final String CHECK_ESN_PARSE_SPLIT = "<br />";
 
 }

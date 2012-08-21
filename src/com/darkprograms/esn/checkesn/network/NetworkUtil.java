@@ -13,13 +13,15 @@ import java.net.URLEncoder;
 
 /**
  * Class that performs all network related checkesnfree.com tasks
+ *
  * @author Luke Kuza
  */
 public class NetworkUtil {
 
     /**
      * Makes a checkesnfree.com request for a given MEID and carrier
-     * @param MEID MEID of the ESN you wish to check (DEC/HEX, preferred HEX)
+     *
+     * @param MEID    MEID of the ESN you wish to check (DEC/HEX, preferred HEX)
      * @param carrier The carrier constant tied to the MEID ex. sprint or Carrier.SPRINT
      * @return Returns parsed data in format clean:true|false:status:phone stolen
      * @throws Exception Throws exception if network can not be reached or if there is a parsing error
@@ -55,6 +57,7 @@ public class NetworkUtil {
 
     /**
      * Parse the checkesnfree.com response after writing to it
+     *
      * @param inputStream InputStream of connection
      * @return Returns fully parsed data from InputStream. Format =  clean:true|false:status:phone stolen
      * @throws Exception Exception if connection can not be made or if there was a parsing error
@@ -63,13 +66,14 @@ public class NetworkUtil {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
         while (!(line = bufferedReader.readLine()).trim().equals(CheckESNConstants.CHECK_ESN_RESPONSE)) {
-           //Wait until the line with data we need
+            //Wait until the line with data we need
         }
         //Skip a line
         bufferedReader.readLine();
         line = bufferedReader.readLine();
         bufferedReader.close();
-        return "clean:" + !line.contains(CheckESNConstants.CHECK_ESN_BAD_ESN) + ":status:" + line.split(">")[4].replace(CheckESNConstants.CHECK_ESN_PARSE_STATUS, "").trim();
+        return "clean:" + !line.contains(CheckESNConstants.CHECK_ESN_BAD_ESN) + ":status:" + line.split(CheckESNConstants.CHECK_ESN_PARSE_SPLIT)[1].replace(CheckESNConstants.CHECK_ESN_PARSE_STATUS_STRONG, "")
+                .replace(CheckESNConstants.CHECK_ESN_PARSE_STATUS_STRONG_CLOSE, "").trim();
     }
 
 }
