@@ -34,9 +34,9 @@ public class NetworkUtil {
 
 
             OutputStreamWriter outputStream = new OutputStreamWriter(urlConnection.getOutputStream());
-            String request = URLEncoder.encode("esnchecker", "UTF-8") + "=" + URLEncoder.encode("true", "UTF-8");
-            request += "&" + URLEncoder.encode("mode", "UTF-8") + "=" + URLEncoder.encode(carrier, "UTF-8");
-            request += "&" + URLEncoder.encode("MEID1", "UTF-8") + "=" + URLEncoder.encode(MEID, "UTF-8");
+            String request = URLEncoder.encode("CESN", "UTF-8") + "=" + URLEncoder.encode("true", "UTF-8");
+            request += "&" + URLEncoder.encode("MODE", "UTF-8") + "=" + URLEncoder.encode(carrier, "UTF-8");
+            request += "&" + URLEncoder.encode("MEID", "UTF-8") + "=" + URLEncoder.encode(MEID, "UTF-8");
             request += "&" + URLEncoder.encode("submitButton", "UTF-8") + "=" + URLEncoder.encode("Check ESN", "UTF-8");
 
             outputStream.write(request);
@@ -65,15 +65,15 @@ public class NetworkUtil {
     private String parseResponse(InputStream inputStream) throws Exception {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
-        while (!(line = bufferedReader.readLine()).trim().equals(CheckESNConstants.CHECK_ESN_RESPONSE)) {
+        while (!(line = bufferedReader.readLine()).trim().contains(CheckESNConstants.CHECK_ESN_RESPONSE)) {
             //Wait until the line with data we need
         }
         //Skip a line
-        bufferedReader.readLine();
-        line = bufferedReader.readLine();
+        //bufferedReader.readLine();
+        // line = bufferedReader.readLine();
         bufferedReader.close();
-        return "clean:" + !line.contains(CheckESNConstants.CHECK_ESN_BAD_ESN) + ":status:" + line.split(CheckESNConstants.CHECK_ESN_PARSE_SPLIT)[1].replace(CheckESNConstants.CHECK_ESN_PARSE_STATUS_STRONG, "")
-                .replace(CheckESNConstants.CHECK_ESN_PARSE_STATUS_STRONG_CLOSE, "").trim();
+        return "clean:" + !line.contains(CheckESNConstants.CHECK_ESN_BAD_ESN) + ":status:" + line.split(CheckESNConstants.CHECK_ESN_PARSE_SPLIT)[2]
+                .replace(CheckESNConstants.CHECK_ESN_PARSE_STATUS_REMOVAL, "").trim();
     }
 
 }

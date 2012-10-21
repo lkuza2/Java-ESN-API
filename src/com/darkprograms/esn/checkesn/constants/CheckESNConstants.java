@@ -22,7 +22,7 @@ public interface CheckESNConstants {
     /**
      * What to delete on the status text returned from HTML
      */
-    public static final String CHECK_ESN_PARSE_STATUS_STRONG = "<strong>";
+    public static final String CHECK_ESN_PARSE_STATUS_REMOVAL = "</font></div>";
     /**
      * The Closing Tag To delete
      */
