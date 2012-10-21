@@ -1,10 +1,12 @@
 package com.darkprograms.esn;
 
-import javax.xml.bind.DatatypeConverter;
+import ae.javax.xml.bind.DatatypeConverter;
+
 import java.security.MessageDigest;
 
 /**
  * ESN class containing methods to convert ESN data (DEC/HEX)
+ *
  * @author Luke Kuza
  */
 public class ESN extends ESNObject {
@@ -24,6 +26,7 @@ public class ESN extends ESNObject {
 
     /**
      * Constructor for ESN Object
+     *
      * @param MEIDHEX The MEID hex to want to convert to an ESN
      */
     protected ESN(String MEIDHEX) {
@@ -31,7 +34,6 @@ public class ESN extends ESNObject {
     }
 
     /**
-     *
      * @param MEIDHEX
      */
     private void setMEIDHEX(String MEIDHEX) {
@@ -40,6 +42,7 @@ public class ESN extends ESNObject {
 
     /**
      * Gets the MEID HEX that this ESN object is using to convert
+     *
      * @return MEID HEX String
      */
     private String getMEIDHEX() {

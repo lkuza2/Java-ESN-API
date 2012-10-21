@@ -2,6 +2,7 @@ package com.darkprograms.esn;
 
 /**
  * All ESN/MEID objects extend off of this Class
+ *
  * @author Luke Kuza
  */
 public class ESNObject {

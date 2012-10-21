@@ -5,6 +5,7 @@ import com.darkprograms.esn.checkesn.props.ESNProperties;
 
 /**
  * MEID Class containing methods to convert MEID types and get MEID properties
+ *
  * @author Luke Kuza
  */
 public class MEID extends ESNObject {
@@ -36,6 +37,7 @@ public class MEID extends ESNObject {
 
     /**
      * Checks if the given MEID is indeed an MEID, whether it be Hex or Dec
+     *
      * @param MEID Input DEC/HEX MEID
      * @return True if MEID, false otherwise
      */
@@ -45,6 +47,7 @@ public class MEID extends ESNObject {
 
     /**
      * Sets the MEID of this class
+     *
      * @param MEID Input MEID
      */
     private void setMEID(String MEID) {
@@ -53,6 +56,7 @@ public class MEID extends ESNObject {
 
     /**
      * Gets MEID of this MEID object
+     *
      * @return String of the MEID, can either be DEC or HEX, use getType to determine
      */
     public String getMEID() {
@@ -61,6 +65,7 @@ public class MEID extends ESNObject {
 
     /**
      * Gets the carrier this MEID is tied to
+     *
      * @param carrier Constant carrier string.  Ex. Carrier.SPRINT
      */
     private void setCarrier(String carrier) {
@@ -69,6 +74,7 @@ public class MEID extends ESNObject {
 
     /**
      * Gets the carrier tied to this MEID
+     *
      * @return Returns the string carrier, false if there is none
      */
     public String getCarrier() {
@@ -77,6 +83,7 @@ public class MEID extends ESNObject {
 
     /**
      * Returns the MEID type
+     *
      * @return DEC if decimal, HEX if hex
      */
     public String getMEIDType() {
@@ -88,6 +95,7 @@ public class MEID extends ESNObject {
 
     /**
      * Calculates the MEID DEC of the MEID.  If this class's MEID is not DEC, it will convert it (all offline)
+     *
      * @return The MEID in DEC String Format
      */
     public String getMEIDDEC() {
@@ -102,6 +110,7 @@ public class MEID extends ESNObject {
 
     /**
      * Calculates the MEID HEX of the MEID.  If this class's MEID is not HEX, it will convert it (all offline)
+     *
      * @return The MEID in HEX String Format
      */
     public String getMEIDHEX() {
@@ -116,6 +125,7 @@ public class MEID extends ESNObject {
 
     /**
      * Calculates (P)ESN (DEC and HEX) for this MEID.  Returned object contains furthur methods
+     *
      * @return Returns ESN object
      */
     public ESN getESN() {
@@ -126,6 +136,7 @@ public class MEID extends ESNObject {
      * This method will go online to checkesnfree.com and parse the response<br>
      * It will return ESNProperties object containing if the ESN is clean and it's status (ex. lost/stolen)<br>
      * This is the only method that goes online, all others perform offline functions to calculate data
+     *
      * @return Returns ESNProperties Object with information about the ESN for the Carrier tied to this MEID
      * @throws Exception Throws an exception if a connection can not be reached or data can not be parsed
      */
